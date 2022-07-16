@@ -1,0 +1,33 @@
+start, INPUT
+ store numX
+ 
+ Skipcond 400
+ JnS checkNum
+ 
+ Halt
+ 
+checkNum, Load numX
+Subt seis
+Skipcond 000
+Jump printE
+
+Load numX
+Skipcond 800
+Jump printE
+
+Jump printNum
+
+printNum, Load numX
+add num48
+Output
+Jump start
+
+printE, load E
+Output
+Jump start
+ 
+numX, DEC 0
+um, DEC 1
+seis, DEC 6
+E, HEX 0x45 
+num48, DEC 48
