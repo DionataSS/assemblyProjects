@@ -1,0 +1,24 @@
+Input 
+Store NUMERO_PARCELAS /quantidade de parcelas
+
+loop, Load NUMERO_PARCELAS /loop
+      Subt one
+      Store NUMERO_PARCELAS
+      Output
+      Input
+      Store VALOR_PARCELAS /valor das parcelas
+      Output
+      Add TOTAL_PARCELAS
+      Store TOTAL_PARCELAS /soma de parcelas
+      Load NUMERO_PARCELAS 
+      Skipcond 400
+      Jump loop
+      Load NUMERO_PARCELAS
+      Load TOTAL_PARCELAS
+      Output
+      Halt
+
+NUMERO_PARCELAS, DEC 0
+VALOR_PARCELAS, DEC 0
+TOTAL_PARCELAS, DEC 0
+one, DEC 1
