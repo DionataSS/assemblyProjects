@@ -1,0 +1,126 @@
+INPUT
+Store quantidadeParcelas
+
+loop, INPUT
+ Store somaInicial
+ 
+ JnS printI
+ JnS printSomaInicial
+ 
+ JnS printT
+ JnS printSomaTotal
+ 
+ JnS subtraiParcela
+ 
+ Load quantidadeParcelas
+ Skipcond 400 
+ Jump loop 
+ 
+Halt
+
+printSomaInicial, Load numeroX
+ Load numeroX
+ subt numeroX
+ add somaInicial
+ store numeroX
+ JnS corrigeNumero
+ JnS printNumeroCorrigido
+ JumpI printSomaInicial
+ 
+printSomaTotal,  Load somaTotal
+ Load somaTotal
+ Add somaInicial
+ Store somaTotal
+ Load numeroX
+ subt numeroX
+ add somaInicial
+ store numeroX
+ JnS corrigeNumero
+ JnS printNumeroCorrigido
+ JumpI printSomaTotal
+ 
+printI, load stringI
+ load stringI
+ Output
+ load string:
+ Output
+ JumpI printI
+ 
+printT, load stringT
+ load stringT
+ Output
+ load string:
+ Output
+ JumpI printT
+ 
+corrigeNumero, Load numeroX
+ Load numeroX
+ Subt num10
+ Store numeroX
+ Skipcond 000
+ JnS adicionaDezena
+ load numeroX
+ Skipcond 000
+ JnS corrigeNumeroLoop
+ JnS adicionaUnidade
+ JumpI corrigeNumero
+ 
+corrigeNumeroLoop, Load numeroX
+ Load numeroX
+ Subt num10
+ Store numeroX
+ Skipcond 000
+ JnS adicionaDezena
+ load numeroX
+ Skipcond 000
+ JnS corrigeNumeroLoop
+ JnS adicionaUnidade
+ JumpI corrigeNumero
+ 
+adicionaDezena, Load dezena
+ Load dezena
+ add one
+ store dezena
+ JumpI adicionaDezena
+ 
+adicionaUnidade, load unidade
+ load unidade
+ Subt unidade
+ add num10
+ add numeroX
+ store unidade
+ JumpI adicionaUnidade
+ 
+printNumeroCorrigido, load dezena
+ load dezena
+ add num48   
+ Output
+ 
+ load unidade
+ add num48
+ Output
+ 
+ load dezena
+ Subt dezena
+ store dezena
+ 
+ JumpI printNumeroCorrigido
+ 
+subtraiParcela, Load quantidadeParcelas
+ Load quantidadeParcelas
+ Subt one
+ Store quantidadeParcelas
+ JumpI subtraiParcela
+
+somaInicial, DEC 0
+quantidadeParcelas, DEC 0
+one, DEC 1
+somaTotal, DEC 0
+stringI, DEC 80
+stringT, DEC 83
+string:, DEC 58
+num48, DEC 48
+numeroX, DEC 0
+num10, DEC 10
+dezena, DEC 0
+unidade, DEC 0
